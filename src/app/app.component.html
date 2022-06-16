@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reactive form</title>
+</head>
+<body>
+    <form [formGroup]="reactiveForm" (ngSubmit)="Submitform()" >
+        <div class="div">*First Name : <input type="text" formControlName='firstName'></div>
+        <p class="error" *ngIf="reactiveForm.get('firstName').invalid && reactiveForm.get('firstName').touched"> *Please enter name</p> 
+         <div class="div">*Last Name : <input type="text" formControlName='lastName'></div>
+         <p class="error" *ngIf="reactiveForm.get('lastName').invalid && reactiveForm.get('lastName').touched"> *Please enter last name</p>
+     
+         <div class="div">*User Name : <input type="text" formControlName='username'></div>
+         <p class="error" *ngIf="reactiveForm.get('username').invalid && reactiveForm.get('username').touched"> *Please enter username</p>
+     
+         <div class="div">*Password : <input type="text" formControlName="password"></div>
+         <p class="error" *ngIf="reactiveForm.get('password').invalid && reactiveForm.get('password').touched"> *Please enter valid password</p> 
+        
+         <!-- <div class="div"> Gender : &nbsp;&nbsp;
+            <label for="male">Male</label>
+            <input type="radio" name="male" formControlName="male">
+            <label for="female">Female</label>
+            <input type="radio" name="female" formControlName="female">
+        </div> -->
+        <div>            <label>
+                <input type="radio" value="Male" formControlName="gender">
+                  <span>male</span>
+              </label>
+              <label>
+                <input type="radio" value="Female" formControlName="gender">
+                  <span>female</span>
+              </label>
+          
+        </div>
+
+
+
+         <div class="div"><button class="btn"  type="submit" [disabled]="!reactiveForm.valid">Submit</button>
+         <button type="button" (click)= "resetform()" >clear</button>
+         </div>
+
+    </form>
+</body>
+</html>
